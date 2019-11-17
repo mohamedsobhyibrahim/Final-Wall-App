@@ -1,0 +1,46 @@
+@font-face{
+    font-family: 'Tajawal';
+    src: url('../fonts/Tajawal-Regular.ttf') format("trutype"),
+    local('Tajawal');
+}
+
+body{
+    font-family: 'Tajawal',sans-serif;
+}
+
+.bg-secondary{
+    background-color: #1E6EF5 !important;
+}
+
+.bg-light{
+    background-color: #CCC !important;
+}
+.color-white{
+    color: #ffffff !important;
+}
+
+.color-Secondary{
+    color: #1E6EF5 !important;
+}
+
+.latest-post, .latest-comment{
+    padding: 0 15px;
+}
+
+.latest-post, .latest-post-item ,.latest-comment , .latest-comment-item{
+    padding: 6px;
+}
+
+.latest-post li:first-child, .latest-comment li:first-child{
+    border-top: 0;
+}
+
+.latest-post li:last-child, .latest-comment li:last-child{
+    border-top: 0;
+    padding-bottom: 0;
+}
+
+.comment{
+    background-color: #f8f8f8;
+    border: px dashed #CCC;
+}

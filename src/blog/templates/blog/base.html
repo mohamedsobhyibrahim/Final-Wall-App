@@ -1,0 +1,136 @@
+{%  load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% if title  %}
+        <title>The Wall App| {{title}}</title>
+        {% else %}
+        <title>The Wall App</title>
+        {% endif %}
+        <link rel="stylesheet" href="{% static 'blog/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'blog/css/main.css' %}">
+    </head>
+    <body>
+        <header>
+            <!--Start Navbar-->
+                <nav class="navbar navbar-expand-lg navbar-light bg-secondary ">
+                        <a class="navbar-brand color-white" href="{% url 'home' %}  "> Wall App</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                        </button>
+                      
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                          <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                              <a class="nav-link color-white" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle color-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Our Product
+                              </a>
+                              <div class="dropdown-menu color-white" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item color-Secondary" href="#">Mobile Application</a>
+                                <a class="dropdown-item color-Secondary" href="#"> Front-end</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item color-Secondary" href="#"> Back-end</a>
+                              </div>
+                            </li>
+
+                            <li class="nav-item">
+                                    <a class="nav-link color-white"  href="{% url 'about' %}">About us </a>
+                                  </li>
+
+                          </ul>
+
+                          {% if user.is_authenticated %}
+
+                          <ul class="navbar-nav ">
+                            <li class="nav-item"><a class='nav-link color-white' href="{% url 'new_post' %}">Add post</a></li>
+                            <li class="nav-item"><a class='nav-link color-white' href="{% url 'profile' %}">Profile</a></li>
+                            <li class="nav-item"><a class='nav-link color-white' href="{% url 'logout' %}">Logout</a></li>
+                        </ul>
+
+                          {% else %}
+                          <ul class="navbar-nav ">
+                            <li class="nav-item"><a class='nav-link color-white' href="{% url 'login' %}">Login</a></li>
+                            <li class="nav-item"><a class='nav-link color-white' href="{% url 'register' %}">Sign up</a></li>
+                        </ul>
+
+                          {% endif %}
+
+                          
+                        </div>
+                        <!--end Navbar-->
+                 </nav>
+        </header>
+        <section>
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        {% block content %}
+
+                        {% endblock content %}
+
+                    </div>
+                    <div class="col-md-d">
+                        <div class="card mb-3">
+                            <h3 class="text-center bg-secondary text-light p-2">Latest posts</h3>
+                            {% include 'blog/latest_post.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-secondary">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md">
+                        <div class="card-group mt-3">
+                            <div class="card m-3">
+                                <h3 class="card-title text-center border-bottom p-2 m-3">About us </h3>
+                                <div class="card-body">
+                                        Paymob is an infrastructure technology enabler providing payment solutions to empower digital financial service providers across Africa and the Middle East through innovative mobile wallet technology that gives the institute’s clients access to finance and digital payments. Paymob aims to contribute to the financial inclusion movement, while targeting economic growth by implementing solutions that support a cashless society ecosystem.
+                                </div>
+                            </div>
+                            <div class="card m-3">
+                                    <h3 class="card-title text-center border-bottom p-2 m-3">Imortant sites </h3>
+                                    <div class="card-body">
+                                        <ul>
+                                            <li><a href="https://www.python.org" target="_blank">Python Site</a></li>
+                                            <li><a href="https://www.w3schools.com" target="_blank">W3 Schools Site</a></li>
+                                            <li><a href="https://getbootstrap.com" target="_blank">Bootstrap Site</a></li>
+                                            <li><a href="https://www.djangoproject.com" target="_blank">DJango Site</a></li>
+                                            <li><a href="https://code.visualstudio.com"target="_blank">Visual Studio code Site</a></li>
+                                        </ul>
+                                    </div>
+                            </div>
+                            <div class="card m-3">
+                                    <h3 class="card-title text-center border-bottom p-2 m-3">Social Media Contact </h3>
+                                    <h4 class="card-body text-center">
+                                      <a class="text-secondary" href="https://www.facebook.com/PayMobSolutions/" target="_blank"><i class="fab fa-facebook"></i></a>
+                                      <a class="text-secondary"href="https://twitter.com/hajj_alain" target="_blank"><i class="fab fa-twitter"></i></a>
+                                      <a class="text-secondary"href="https://www.linkedin.com/company/paymob/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                    </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                 <div class="row p-2">
+                    <div class="col-md text-center">
+                         <small class="text-light">&copy; all rights are save</small>
+                     </div>
+                 </div>
+            </div>
+           
+        </footer>
+
+        <script src="{% static 'blog/js/jquery-3.3.1.slim.min.js' %}"></script>
+        <script src="{% static 'blog/js/popper.min.js' %}"></script>
+        <script src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'blog/js/fontawesome-all.min.js' %}"></script>
+    </body>
+</html>

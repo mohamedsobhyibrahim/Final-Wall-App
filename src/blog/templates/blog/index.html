@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alerst-{{message.tags}} bg-secondary text-light">
+    {{message}}
+</div>
+{% endfor %}
+{% endif %}
+{% for post in posts %}
+    <div class="border p-3 mb-3">
+        <img class "img-fluid rounded-circle border m-2" width="70px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_D0cVIucjIvQ_Iz5cQpRqL5l_omwNyeuetS6E-Ih88_7ZJrgNw&s" alt="profile picture">
+        <span class="text-secondary">{{post.author}}</br></span>
+        <span class="text-secondary">Posted at {{post.post_date | date:'d-m-Y'}}</span>
+        <h3><a class="color-Secondary" href="{% url 'detail' post.id %}">{{post.title}}</a></h3>
+        <p>{{post.content}}</p>
+    </div>
+{% endfor %}
+
+{% endblock content %}
